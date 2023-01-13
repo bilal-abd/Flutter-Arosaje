@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 void main() {
   runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: '/home',
     getPages: [
       GetPage(name: '/home', page: () => Home(), binding: HomeBinding()),
