@@ -3,13 +3,12 @@ import 'package:flutter_application_1/logincontroller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Home extends GetView<HomeController> {
+class Loginview extends GetView<LoginController> {
   @override
   Widget build(context) => Scaffold(
         backgroundColor: Color(0xFFD6FFCC),
         body: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 250)),
             Center(
                 child: Text(
               "Sign in",
