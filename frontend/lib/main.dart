@@ -11,7 +11,7 @@ import 'homepage/home_view.dart';
 void main() {
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: '/home',
+    initialRoute: '/login',
     getPages: [
       GetPage(
           name: '/login', page: () => Loginview(), binding: Loginbindings()),

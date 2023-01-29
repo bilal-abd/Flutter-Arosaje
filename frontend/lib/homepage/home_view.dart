@@ -14,11 +14,11 @@ class Home extends GetView<HomeController> {
               Container(
                 height: 200,
                 width: double.infinity,
-                child: SvgPicture.asset(
-                  'svg/bottanic_home.svg',
-                  width: 100,
-                  height: 100,
-                ),
+                // child: SvgPicture.asset(
+                //   'svg/bottanic_home.svg',
+                //   width: 100,
+                //   height: 100,
+                // ),
               )
             ],
           ),
