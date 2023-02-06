@@ -40,9 +40,12 @@ class UserController extends Controller
         'email' => 'required|email|max:30',
         'password' => 'required|max:50',
     ]);
+
     if ($validator->fails()) {
         return response()->json([
-            'error' => $validator->errors()
+            'error' => $validator->errors(),
+            'status' => 500
+        
         ]);
     } else {
 
@@ -71,7 +74,7 @@ class UserController extends Controller
         else {
             return response()->json(['error'=>'email or password is incorrect'],500);
         }
-        return 'suceess';
+        return response()->json(['success'=>'success'],200);
     
     }
 }
