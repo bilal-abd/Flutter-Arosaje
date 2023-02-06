@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,13 +23,13 @@ class UserController extends Controller
                 'error' => $validator->errors()
             ]);
         } else {
-        
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
         return response()->json(['user'=>$request->all()]);
+        Success::create('user created successfully');
      }
     }
 
@@ -44,8 +45,10 @@ class UserController extends Controller
             'error' => $validator->errors()
         ]);
     } else {
-        $user = User::whereEmail($request->email)->first();
-        if (Hash::check($request->password, $user->password)) {
+
+      if($user = User::whereEmail($request->email)->first()) {
+        Hash::check($request->password, $user->password );
+           
 
             if ($user->role == 1) {
              return response()->json([
@@ -66,8 +69,10 @@ class UserController extends Controller
             }
         } 
         else {
-            return response()->json(['error'=>'email or password is incorrect'],401);
+            return response()->json(['error'=>'email or password is incorrect'],500);
         }
+        return 'suceess';
+    
     }
 }
 }
