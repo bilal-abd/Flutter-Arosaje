@@ -49,12 +49,9 @@ class UserController extends Controller
         ]);
     } else {
 
-      if($user = User::whereEmail($request->email)->first()) {
-        Hash::check($request->password, $user->password );
-           
-
-            if ($user->role == 1) {
-             return response()->json([
+    if($user = User::whereEmail($request->email)->first()){
+        if(Hash::check($request->password, $user->password)){
+            if ($user->role == 1) { return response()->json([
                 'token' => $user->createToken(time())->plainTextToken,
                 'role' => 'botaniste'
         ]); 
@@ -71,11 +68,13 @@ class UserController extends Controller
                 ]); 
             }
         } 
-        else {
+        elseif (!Hash::check($request->password, $user->password)) {
             return response()->json(['error'=>'email or password is incorrect'],500);
         }
+    } else {
+        return response()->json(['error'=>'email or password is incorrect'],500);
+    }
         return response()->json(['message'=>'success'],200);
-    
     }
 }
 }
