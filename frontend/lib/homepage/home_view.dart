@@ -14,11 +14,19 @@ class Home extends GetView<HomeController> {
               Container(
                 height: 200,
                 width: double.infinity,
-                // child: SvgPicture.asset(
-                //   'svg/bottanic_home.svg',
-                //   width: 100,
-                //   height: 100,
-                // ),
+                child: const Image(image: AssetImage('assets/botanic.png')),
+              ),
+              Row(
+                children: [
+                  Container(
+                    height: 5,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.red,
+                    ),
+                  )
+                ],
               )
             ],
           ),
