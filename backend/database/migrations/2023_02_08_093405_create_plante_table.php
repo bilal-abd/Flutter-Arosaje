@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('localisation');
             $table->integer('id_type');
             $table->binary('image');
+            $table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
