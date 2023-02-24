@@ -79,9 +79,30 @@ class PlanteController extends Controller
      * @param  \App\Models\Plante  $plante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plante $plante)
+    public function update(Request $request,  $id)
     {
-        //
+      $plantevalidation = $request->validate([
+        'nom_plante' => 'required',
+        'chemin_plante' => 'required',
+        'caracteristiques' => 'required',
+        'description' => 'required',
+        'localisation' => 'required',
+        'id_type' => 'required',
+        'image' => 'required',
+        'user_id' => 'required',
+          ]);
+      $plante = Plante::where('id', $id)->update([
+        'nom_plante' => $plantevalidation['nom_plante'],
+        'chemin_plante' => $plantevalidation['chemin_plante'],
+        'caracteristiques' => $plantevalidation['caracteristiques'],
+        'description' => $plantevalidation['description'],
+        'localisation' => $plantevalidation['localisation'],
+        'id_type' => $plantevalidation['id_type'],
+        'image' => $plantevalidation['image'],
+        'user_id' => $plantevalidation['user_id'],
+      ]);
+        return response(["message" => "plante modifiee"], 201);
+
     }
 
     /**
@@ -90,8 +111,10 @@ class PlanteController extends Controller
      * @param  \App\Models\Plante  $plante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plante $plante)
+    public function destroy( $id)
     {
-        //
+        $plante = Plante::where('id', $id)->delete();
+        return response(["message" => "plante supprimee"], 201);
+    
     }
 }
