@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('plante_id')->references('id')->on('plante');
             $table->integer('user_id')->references('id')->on('users');
-            $table->date('dateConseil');
             $table->string('titreConseil');
             $table->text('contenuConseil');
             $table->timestamps();

@@ -11,9 +11,8 @@ class Conseil extends Model
     protected $table = 'conseil';
     protected $fillable = [
         'plante_id',
-        'id_user',
-        'titre',
-        'description',
-        'image',
+        'user_id',
+        'titreConseil',
+        'contenuConseil'
     ];
 }

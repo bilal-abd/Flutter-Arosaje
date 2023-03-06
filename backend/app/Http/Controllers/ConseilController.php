@@ -29,14 +29,24 @@ class ConseilController extends Controller
      */
     public function store(Request $request)
     {
-        $conseil = new Conseil();
-        $conseil->id_plante = $request->id_plante;
-        $conseil->id_user = $request->id_user;
-        $conseil->titre = $request->titre;
-        $conseil->description = $request->description;
-        $conseil->image = $request->image;
-        $conseil->save();
-        return response($conseil, 201);
+        $conseilvalidation = $request->validate([
+
+    'plante_id' => 'required',
+    'user_id' => 'required',
+    'titreConseil' => 'required',
+    'contenuConseil' => 'required',
+   
+        ]);
+        $conseil = Conseil::create([
+    'plante_id' => $conseilvalidation['plante_id'],
+    'user_id' => $conseilvalidation['user_id'],
+    'titreConseil' => $conseilvalidation['titreConseil'],
+    'contenuConseil' => $conseilvalidation['contenuConseil'],
+        ]);
+        return response(["message" => "conseil ajoute"], 201);
+
+
+
     }
 
     /**
