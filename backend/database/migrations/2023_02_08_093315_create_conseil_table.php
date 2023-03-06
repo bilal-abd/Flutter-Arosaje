@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('conseil', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_plante');
-            $table->date('dateConseil');
+            $table->integer('plante_id')->references('id')->on('plante');
+            $table->integer('user_id')->references('id')->on('users');
             $table->string('titreConseil');
             $table->text('contenuConseil');
             $table->timestamps();
