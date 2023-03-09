@@ -35,4 +35,27 @@ class LoginController extends GetxController {
       );
     }
   }
+
+  // void logidn() async {
+  //   const String url = "http://10.0.2.2:8000/api/login";
+  //   final body = {"email": email.text, "password": password.text};
+  //   Response response;
+
+  //   final dio = Dio();
+
+  //   response = await dio.post(url, data: body);
+  //   try {
+  //     if (response.statusCode == 200) {
+  //       final userJson = response.data[0] as Map<String, dynamic>;
+  //       final user = User.fromJson(userJson);
+  //       Get.to(() => Home(user: user));
+  //     } else {
+  //       SnackBar(content: Text("${response.statusCode}"));
+  //     }
+  //   } catch (e) {
+  //     SnackBar(
+  //       content: Text("${e.toString()}"),
+  //     );
+  //   }
+  // }
 }
