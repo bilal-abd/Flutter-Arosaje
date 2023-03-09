@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conseil;
 use App\Models\Plante;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,11 +64,7 @@ class PlanteController extends Controller
      */
     public function show($id)
     {
-     $plante = DB::table('plante')
-     ->join('users', 'plante.user_id', '=', 'users.id')
-     ->select('plante.*', 'users.name' , 'users.prenom' , 'users.email')
-      ->where('plante.id', '=', $id)
-      ->get();
+    $plante = Plante::with('user','conseils')->find($id);
       return $plante ;
     }
 

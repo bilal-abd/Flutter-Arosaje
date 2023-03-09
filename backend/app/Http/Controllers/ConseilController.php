@@ -55,14 +55,11 @@ class ConseilController extends Controller
      * @param  \App\Models\Conseil  $conseil
      * @return \Illuminate\Http\Response
      */
-    public function show(Conseil $conseil)
+    public function show(Conseil $id)
     {
-    $conseil = Conseil::find($conseil);
-    if ($conseil) {
-        return response($conseil, 200);
-    }
-        return response(["message" => "aucun conseil trouve"], 200);
-    }
+        $conseil = Conseil::with('user')->find($id);
+         return $conseil ;
+      }
     /**
      * Update the specified resource in storage.
      *
