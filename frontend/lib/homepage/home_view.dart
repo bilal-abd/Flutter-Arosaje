@@ -19,6 +19,7 @@ class Home extends GetView<HomeController> {
                 //   width: 100,
                 //   height: 100,
                 // ),
+                child: Text(controller.user?.name ?? ""),
               )
             ],
           ),
