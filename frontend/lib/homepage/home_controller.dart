@@ -4,13 +4,11 @@ import '../model/user.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeController extends GetxController {
-  User? user = User.empty();
+  late User user;
 
   void onInit() {
     super.onInit();
-    final args = Get.arguments;
-    if (args != null && mounted) {
-      user = args as User;
-    }
+    final Map<String, dynamic> args = Get.arguments;
+    user = args["user"] as User;
   }
 }

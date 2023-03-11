@@ -51,7 +51,9 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         final userJson = response.data[0] as Map<String, dynamic>;
         final user = User.fromJson(userJson);
-        Get.to(() => Home(), arguments: user);
+        Get.to(() => Home(), arguments: {
+          "user": user,
+        });
       } else {
         SnackBar(content: Text("${response.statusCode}"));
       }
