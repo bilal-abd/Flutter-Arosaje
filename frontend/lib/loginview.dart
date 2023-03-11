@@ -93,8 +93,7 @@ class Loginview extends GetView<LoginController> {
                             const Color(0xff20DF7F)),
                       ),
                       onPressed: () {
-                        controller.login(
-                            controller.email.text, controller.password.text);
+                        controller.logidn();
                       },
                     )
                   ],
