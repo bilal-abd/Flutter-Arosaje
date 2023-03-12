@@ -18,12 +18,9 @@ class PlanteFactory extends Factory
     {
         return [
             'nom_plante' => $this->faker->name(),
-            'chemin_plante' => $this->faker->name(),
-            'caracteristiques' => $this->faker->name(),
-            'description' => $this->faker->name(),
+            'description' => $this->faker->text(),
             'localisation' => $this->faker->name(),
-            'id_type' => $this->faker->numberBetween(1, 10),
-            'image' => $this->faker->name(),
+            'image' => $this->faker->imageUrl(),
             'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
