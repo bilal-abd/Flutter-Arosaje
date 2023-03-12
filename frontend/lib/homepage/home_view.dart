@@ -12,15 +12,27 @@ class Home extends GetView<HomeController> {
           child: Column(
             children: [
               Container(
-                height: 200,
-                width: double.infinity,
-                // child: SvgPicture.asset(
-                //   'svg/bottanic_home.svg',
-                //   width: 100,
-                //   height: 100,
-                // ),
-                child: Text(controller.user.name ?? ""),
-              )
+                  height: 200,
+                  width: double.infinity,
+                  // child: SvgPicture.asset(
+                  //   'svg/bottanic_home.svg',
+                  //   width: 100,
+                  //   height: 100,
+                  // ),
+                  child: Obx(() {
+                    final plantes = controller.planteList;
+                    return ListView.builder(
+                      itemCount: plantes.length,
+                      itemBuilder: (context, index) {
+                        final plante = plantes[index];
+                        return ListTile(
+                          title: Text(plante.nomPlante ?? ""),
+                          subtitle: Text(plante.description ?? ""),
+                          trailing: Text(plante.image ?? ""),
+                        );
+                      },
+                    );
+                  }))
             ],
           ),
         ),
