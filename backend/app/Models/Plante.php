@@ -11,11 +11,8 @@ class Plante extends Model
     protected $table = 'plante';
     protected $fillable = [
         'nom_plante',
-        'chemin_plante',
-        'caracteristiques',
         'description',
         'localisation',
-        'id_type',
         'image',
         'user_id',
     ];
