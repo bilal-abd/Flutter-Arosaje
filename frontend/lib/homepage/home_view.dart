@@ -26,11 +26,12 @@ class Home extends GetView<HomeController> {
                             const SizedBox(width: 16),
                             CircleAvatar(
                               radius: 20,
-                              backgroundImage: NetworkImage(plante.image ?? ""),
+                              backgroundImage:
+                                  NetworkImage(plante.photoProfil ?? ""),
                             ),
                             const SizedBox(width: 16),
                             Text(
-                              plante.nomPlante ?? "",
+                              "${plante.prenomUtilisateur} ${plante.nameUtilisateur}",
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),

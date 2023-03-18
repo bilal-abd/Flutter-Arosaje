@@ -11,6 +11,9 @@ class Plante with _$Plante {
     @JsonKey(name: 'caracteristiques') String? caracteristiques,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'localisation') String? localisation,
+    @JsonKey(name: 'prenom_utilisateur') String? prenomUtilisateur,
+    @JsonKey(name: 'name_utilisateur') String? nameUtilisateur,
+    @JsonKey(name: 'image_utlisateur') String? photoProfil,
     @JsonKey(name: 'id_type') int? idType,
     @JsonKey(name: 'image') String? image,
     @JsonKey(name: 'user_id') int? userId,
@@ -20,6 +23,9 @@ class Plante with _$Plante {
 
   factory Plante.empty() {
     return Plante(
+      prenomUtilisateur: "",
+      nameUtilisateur: "",
+      photoProfil: "",
       createdAt: DateTime.now(),
       caracteristiques: "",
       cheminPlante: "",
