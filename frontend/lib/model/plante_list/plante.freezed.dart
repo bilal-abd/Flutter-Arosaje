@@ -32,6 +32,12 @@ mixin _$Plante {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'localisation')
   String? get localisation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'prenom_utilisateur')
+  String? get prenomUtilisateur => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name_utilisateur')
+  String? get nameUtilisateur => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_utlisateur')
+  String? get photoProfil => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_type')
   int? get idType => throw _privateConstructorUsedError;
   @JsonKey(name: 'image')
@@ -60,6 +66,9 @@ abstract class $PlanteCopyWith<$Res> {
       @JsonKey(name: 'caracteristiques') String? caracteristiques,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'localisation') String? localisation,
+      @JsonKey(name: 'prenom_utilisateur') String? prenomUtilisateur,
+      @JsonKey(name: 'name_utilisateur') String? nameUtilisateur,
+      @JsonKey(name: 'image_utlisateur') String? photoProfil,
       @JsonKey(name: 'id_type') int? idType,
       @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'user_id') int? userId,
@@ -86,6 +95,9 @@ class _$PlanteCopyWithImpl<$Res, $Val extends Plante>
     Object? caracteristiques = freezed,
     Object? description = freezed,
     Object? localisation = freezed,
+    Object? prenomUtilisateur = freezed,
+    Object? nameUtilisateur = freezed,
+    Object? photoProfil = freezed,
     Object? idType = freezed,
     Object? image = freezed,
     Object? userId = freezed,
@@ -116,6 +128,18 @@ class _$PlanteCopyWithImpl<$Res, $Val extends Plante>
       localisation: freezed == localisation
           ? _value.localisation
           : localisation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      prenomUtilisateur: freezed == prenomUtilisateur
+          ? _value.prenomUtilisateur
+          : prenomUtilisateur // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameUtilisateur: freezed == nameUtilisateur
+          ? _value.nameUtilisateur
+          : nameUtilisateur // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photoProfil: freezed == photoProfil
+          ? _value.photoProfil
+          : photoProfil // ignore: cast_nullable_to_non_nullable
               as String?,
       idType: freezed == idType
           ? _value.idType
@@ -154,6 +178,9 @@ abstract class _$$_PlanteCopyWith<$Res> implements $PlanteCopyWith<$Res> {
       @JsonKey(name: 'caracteristiques') String? caracteristiques,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'localisation') String? localisation,
+      @JsonKey(name: 'prenom_utilisateur') String? prenomUtilisateur,
+      @JsonKey(name: 'name_utilisateur') String? nameUtilisateur,
+      @JsonKey(name: 'image_utlisateur') String? photoProfil,
       @JsonKey(name: 'id_type') int? idType,
       @JsonKey(name: 'image') String? image,
       @JsonKey(name: 'user_id') int? userId,
@@ -177,6 +204,9 @@ class __$$_PlanteCopyWithImpl<$Res>
     Object? caracteristiques = freezed,
     Object? description = freezed,
     Object? localisation = freezed,
+    Object? prenomUtilisateur = freezed,
+    Object? nameUtilisateur = freezed,
+    Object? photoProfil = freezed,
     Object? idType = freezed,
     Object? image = freezed,
     Object? userId = freezed,
@@ -207,6 +237,18 @@ class __$$_PlanteCopyWithImpl<$Res>
       localisation: freezed == localisation
           ? _value.localisation
           : localisation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      prenomUtilisateur: freezed == prenomUtilisateur
+          ? _value.prenomUtilisateur
+          : prenomUtilisateur // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameUtilisateur: freezed == nameUtilisateur
+          ? _value.nameUtilisateur
+          : nameUtilisateur // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photoProfil: freezed == photoProfil
+          ? _value.photoProfil
+          : photoProfil // ignore: cast_nullable_to_non_nullable
               as String?,
       idType: freezed == idType
           ? _value.idType
@@ -242,6 +284,9 @@ class _$_Plante implements _Plante {
       @JsonKey(name: 'caracteristiques') this.caracteristiques,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'localisation') this.localisation,
+      @JsonKey(name: 'prenom_utilisateur') this.prenomUtilisateur,
+      @JsonKey(name: 'name_utilisateur') this.nameUtilisateur,
+      @JsonKey(name: 'image_utlisateur') this.photoProfil,
       @JsonKey(name: 'id_type') this.idType,
       @JsonKey(name: 'image') this.image,
       @JsonKey(name: 'user_id') this.userId,
@@ -270,6 +315,15 @@ class _$_Plante implements _Plante {
   @JsonKey(name: 'localisation')
   final String? localisation;
   @override
+  @JsonKey(name: 'prenom_utilisateur')
+  final String? prenomUtilisateur;
+  @override
+  @JsonKey(name: 'name_utilisateur')
+  final String? nameUtilisateur;
+  @override
+  @JsonKey(name: 'image_utlisateur')
+  final String? photoProfil;
+  @override
   @JsonKey(name: 'id_type')
   final int? idType;
   @override
@@ -287,7 +341,7 @@ class _$_Plante implements _Plante {
 
   @override
   String toString() {
-    return 'Plante(id: $id, nomPlante: $nomPlante, cheminPlante: $cheminPlante, caracteristiques: $caracteristiques, description: $description, localisation: $localisation, idType: $idType, image: $image, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Plante(id: $id, nomPlante: $nomPlante, cheminPlante: $cheminPlante, caracteristiques: $caracteristiques, description: $description, localisation: $localisation, prenomUtilisateur: $prenomUtilisateur, nameUtilisateur: $nameUtilisateur, photoProfil: $photoProfil, idType: $idType, image: $image, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -306,6 +360,12 @@ class _$_Plante implements _Plante {
                 other.description == description) &&
             (identical(other.localisation, localisation) ||
                 other.localisation == localisation) &&
+            (identical(other.prenomUtilisateur, prenomUtilisateur) ||
+                other.prenomUtilisateur == prenomUtilisateur) &&
+            (identical(other.nameUtilisateur, nameUtilisateur) ||
+                other.nameUtilisateur == nameUtilisateur) &&
+            (identical(other.photoProfil, photoProfil) ||
+                other.photoProfil == photoProfil) &&
             (identical(other.idType, idType) || other.idType == idType) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.userId, userId) || other.userId == userId) &&
@@ -325,6 +385,9 @@ class _$_Plante implements _Plante {
       caracteristiques,
       description,
       localisation,
+      prenomUtilisateur,
+      nameUtilisateur,
+      photoProfil,
       idType,
       image,
       userId,
@@ -353,6 +416,9 @@ abstract class _Plante implements Plante {
       @JsonKey(name: 'caracteristiques') final String? caracteristiques,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'localisation') final String? localisation,
+      @JsonKey(name: 'prenom_utilisateur') final String? prenomUtilisateur,
+      @JsonKey(name: 'name_utilisateur') final String? nameUtilisateur,
+      @JsonKey(name: 'image_utlisateur') final String? photoProfil,
       @JsonKey(name: 'id_type') final int? idType,
       @JsonKey(name: 'image') final String? image,
       @JsonKey(name: 'user_id') final int? userId,
@@ -379,6 +445,15 @@ abstract class _Plante implements Plante {
   @override
   @JsonKey(name: 'localisation')
   String? get localisation;
+  @override
+  @JsonKey(name: 'prenom_utilisateur')
+  String? get prenomUtilisateur;
+  @override
+  @JsonKey(name: 'name_utilisateur')
+  String? get nameUtilisateur;
+  @override
+  @JsonKey(name: 'image_utlisateur')
+  String? get photoProfil;
   @override
   @JsonKey(name: 'id_type')
   int? get idType;
