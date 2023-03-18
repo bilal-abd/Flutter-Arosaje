@@ -6,23 +6,59 @@ import 'home_controller.dart';
 
 class Home extends GetView<HomeController> {
   @override
-  Widget build(context) => Scaffold(
-        backgroundColor: Color(0xFFD6FFCC),
-        body: SingleChildScrollView(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFD6FFCC),
+      body: SingleChildScrollView(
+        child: Expanded(
           child: Column(
             children: [
-              Container(
-                height: 200,
-                width: double.infinity,
-                // child: SvgPicture.asset(
-                //   'svg/bottanic_home.svg',
-                //   width: 100,
-                //   height: 100,
-                // ),
-                child: Text(controller.user.name ?? ""),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: controller.planteList.length,
+                itemBuilder: (context, index) {
+                  final plante = controller.planteList[index];
+                  return Column(children: [
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        const SizedBox(width: 16),
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(plante.image ?? ""),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          plante.nomPlante ?? "",
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      height: 200,
+                      child: Image.network(plante.image ?? ""),
+                    ),
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      height: 24,
+                      child: IconButton(
+                        icon: const Icon(Icons.comment),
+                        onPressed: () {},
+                      ),
+                    )
+                  ]);
+                },
+              ),
+              SizedBox(
+                height: 50,
               )
             ],
           ),
         ),
-      );
+      ),
+    );
+  }
 }
