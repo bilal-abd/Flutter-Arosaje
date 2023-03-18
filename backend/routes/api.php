@@ -21,6 +21,7 @@ use Illuminate\Routing\Route as RoutingRoute;
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 // Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'user']); 
+Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 
 Route::get('/plante', [PlanteController::class, 'index']);
 Route::post('/plante', [PlanteController::class, 'store']);

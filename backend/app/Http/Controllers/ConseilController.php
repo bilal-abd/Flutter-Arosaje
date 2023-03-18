@@ -14,7 +14,12 @@ class ConseilController extends Controller
      */
     public function index()
     {
-    $conseil = Conseil::all();
+    $conseil = Conseil::with('user')->get()->map(function ($conseil) {
+        $conseil->prenom_utilisateur = $conseil->user->only('name')['name'];
+        $conseil->name_utilisateur = $conseil->user->only('prenom')['prenom'];
+        $conseil->image_utilisateur = $conseil->user->only('photo')['photo'];
+        return $conseil;
+    });
     if ($conseil) {
         return response($conseil, 200);
     }
