@@ -15,24 +15,20 @@ class HomeController extends GetxController {
   TextEditingController localisation = TextEditingController();
   TextEditingController image = TextEditingController();
   final planteList = <Plante>[].obs;
-  final RxStatus status = RxStatus.loading();
 
   void onInit() async {
-    super.onInit();
     final Map<String, dynamic> args = Get.arguments;
     user = args["user"] as User;
     await fetchPlantes();
+    super.onInit();
   }
 
   Future<void> fetchPlantes() async {
     try {
-      status.isLoading;
       Response response = await Dio().get('http://10.0.2.2:8000/api/plante');
       List<dynamic> data = response.data;
       planteList.value = data.map((plant) => Plante.fromJson(plant)).toList();
-      status.isSuccess;
     } catch (error) {
-      status.isError;
       print(error);
     }
   }
