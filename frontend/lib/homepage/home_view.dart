@@ -10,6 +10,12 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/addPost', arguments: {"user": controller.user});
+        },
+        child: Icon(Icons.add),
+      ),
       backgroundColor: const Color(0xFFD6FFCC),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -76,12 +82,6 @@ class Home extends GetView<HomeController> {
                 ),
               ),
               const SizedBox(height: 50),
-              FloatingActionButton(
-                onPressed: () {
-                  Get.toNamed('/addPost', arguments: {"user": controller.user});
-                },
-                child: Icon(Icons.add),
-              )
             ],
           ),
         ),
