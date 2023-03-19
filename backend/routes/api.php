@@ -30,7 +30,7 @@ Route::put('/plante/{id}', [PlanteController::class, 'update']);
 Route::delete('/plante/{id}', [PlanteController::class, 'destroy']);
 
 Route::get('/conseil', [ConseilController::class, 'index']);
-Route::post('/conseil', [ConseilController::class, 'store']);
+Route::post('/conseil/{id}', [ConseilController::class, 'store']);
 Route::get('/conseil/{id}', [ConseilController::class, 'show']);
 Route::put('/conseil/{id}', [ConseilController::class, 'update']);
 Route::delete('/conseil/{id}', [ConseilController::class, 'destroy']);

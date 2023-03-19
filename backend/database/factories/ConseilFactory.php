@@ -19,7 +19,6 @@ class ConseilFactory extends Factory
         return [
             'plante_id' => $this->faker->numberBetween(1, 10),
             'user_id' => $this->faker->numberBetween(1, 10),
-            'titreConseil' => $this->faker->name(),
             'contenuConseil' => $this->faker->name(),
         ];
     }
