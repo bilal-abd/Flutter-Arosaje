@@ -66,7 +66,9 @@ class PostPage extends GetView<PostPageController> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.createComment();
+                    },
                     icon: const Icon(Icons.send),
                   ),
                 ],

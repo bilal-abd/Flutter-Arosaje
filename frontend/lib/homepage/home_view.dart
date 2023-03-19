@@ -57,8 +57,10 @@ class Home extends GetView<HomeController> {
                         child: GestureDetector(
                           child: Icon(Icons.comment),
                           onTap: () {
-                            Get.to(() => PostPage(),
-                                arguments: {"planteList": plante});
+                            Get.toNamed('/comment', arguments: {
+                              "planteList": plante,
+                              "user": controller.user
+                            });
                           },
                         ),
                       ),
