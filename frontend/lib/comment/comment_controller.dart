@@ -38,7 +38,7 @@ class PostPageController extends GetxController {
 
   void createComment() async {
     try {
-      const String url = "http://10.0.2.2:8000/api/plante";
+      const String url = "http://10.0.2.2:8000/api/conseil/${planteList.id}";
       final body = {
         "plante_id": planteList.id,
         "user_id": user.id,
