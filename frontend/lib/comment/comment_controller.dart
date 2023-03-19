@@ -36,7 +36,7 @@ class PostPageController extends GetxController {
     }
   }
 
-  void createComment() async {
+  Future<void> createComment() async {
     try {
       String url = "http://10.0.2.2:8000/api/conseil/${planteList.id}";
       final body = {
@@ -49,7 +49,7 @@ class PostPageController extends GetxController {
 
       response = await dio.post(url, data: body);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         onInit();
         commentController.clear();
       } else {

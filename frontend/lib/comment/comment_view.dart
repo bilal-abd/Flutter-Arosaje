@@ -28,7 +28,26 @@ class PostPage extends GetView<PostPageController> {
               ],
             ),
             const SizedBox(height: 16),
-            Image.network(controller.planteList.image ?? ""),
+            Image.network(
+              controller.planteList.image ?? "",
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(
+                  Icons.image_not_supported,
+                  size: 300,
+                );
+              },
+            ),
+            Text(
+              "Description : ${controller.planteList.description}",
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              "Nom de la plante : ${controller.planteList.nomPlante}",
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
             Obx(
               () => ListView.builder(
@@ -66,8 +85,8 @@ class PostPage extends GetView<PostPageController> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      controller.createComment();
+                    onPressed: () async {
+                      await controller.createComment();
                     },
                     icon: const Icon(Icons.send),
                   ),
