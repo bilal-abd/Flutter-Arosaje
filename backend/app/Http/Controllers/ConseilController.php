@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Conseil;
+use App\Models\Plante;
 use Illuminate\Http\Request;
 
 class ConseilController extends Controller
@@ -33,27 +34,22 @@ class ConseilController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $conseilvalidation = $request->validate([
-
-    'plante_id' => 'required',
-    'user_id' => 'required',
-    'titreConseil' => 'required',
-    'contenuConseil' => 'required',
-   
+            'user_id' => 'required',
+            'contenuConseil' => 'required',
         ]);
+        
         $conseil = Conseil::create([
-    'plante_id' => $conseilvalidation['plante_id'],
-    'user_id' => $conseilvalidation['user_id'],
-    'titreConseil' => $conseilvalidation['titreConseil'],
-    'contenuConseil' => $conseilvalidation['contenuConseil'],
+            'plante_id' => $id,
+            'user_id' => $conseilvalidation['user_id'],
+            'contenuConseil' => $conseilvalidation['contenuConseil'],
         ]);
+        
         return response(["message" => "conseil ajoute"], 201);
-
-
-
     }
+    
 
     /**
      * Display the specified resource.
@@ -61,11 +57,16 @@ class ConseilController extends Controller
      * @param  \App\Models\Conseil  $conseil
      * @return \Illuminate\Http\Response
      */
-    public function show(Conseil $id)
+    // public function show(Plante $id)
+    // {
+    //         $plante = Plante::with('conseils')->find($id)->first(); 
+    //         return $plante ;
+    //   }
+    public function show(Plante $id)
     {
-        $conseil = Conseil::with('user','plante')->find($id); 
-         return $conseil ;
-      }
+        $conseils = $id->conseils()->get();
+        return $conseils;
+    }
     /**
      * Update the specified resource in storage.
      *
