@@ -40,7 +40,6 @@ class PostPageController extends GetxController {
     try {
       String url = "http://10.0.2.2:8000/api/conseil/${planteList.id}";
       final body = {
-        "plante_id": planteList.id,
         "user_id": user.id,
         "contenuConseil": commentController.text,
       };
