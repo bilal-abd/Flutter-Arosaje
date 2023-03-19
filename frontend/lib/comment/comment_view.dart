@@ -16,37 +16,38 @@ class PostPage extends GetView<PostPageController> {
                 const SizedBox(width: 16),
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: NetworkImage(controller.userProfileImageUrl),
+                  backgroundImage:
+                      NetworkImage(controller.planteList.photoProfil ?? ""),
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  controller.username,
+                  " ${controller.planteList.prenomUtilisateur} ${controller.planteList.nameUtilisateur}",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Image.network(
-                "https://www.footmercato.net/build/images/player-covers/cristiano-ronaldo.352c95f5.jpg"),
+            Image.network(controller.planteList.image ?? ""),
             const SizedBox(height: 16),
             Obx(
               () => ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.comments.length,
+                itemCount: controller.commentList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     leading: CircleAvatar(
                       radius: 16,
-                      backgroundImage:
-                          NetworkImage(controller.userProfileImageUrl),
+                      backgroundImage: NetworkImage(
+                          controller.commentList[index].photoProfil ?? ''),
                     ),
                     title: Text(
-                      controller.username,
+                      "${controller.commentList[index].prenomUtilisateur} ${controller.commentList[index].nameUtilisateur}",
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text(controller.comments[index]),
+                    subtitle: Text(
+                        controller.commentList[index].contenuConseil ?? ''),
                   );
                 },
               ),
@@ -65,7 +66,7 @@ class PostPage extends GetView<PostPageController> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () => controller.addComment(),
+                    onPressed: () {},
                     icon: const Icon(Icons.send),
                   ),
                 ],
