@@ -25,7 +25,7 @@ class Home extends GetView<HomeController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(width: 90, child: SvgPicture.asset()),
+              // Container(width: 90, child: SvgPicture.asset()),
               Obx(
                 () => ListView.builder(
                   shrinkWrap: true,
