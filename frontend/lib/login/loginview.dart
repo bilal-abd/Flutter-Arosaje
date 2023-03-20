@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logincontroller.dart';
-import 'package:flutter_application_1/repo/login_repository.dart';
+import 'package:flutter_application_1/login/logincontroller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

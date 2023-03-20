@@ -6,7 +6,7 @@ import 'package:flutter_application_1/homepage/home_view.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:dio/dio.dart';
 
-import 'model/user/user.dart';
+import '../model/user/user.dart';
 
 class LoginController extends GetxController {
   TextEditingController email = TextEditingController();

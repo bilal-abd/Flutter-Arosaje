@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/comment/comment_bindings.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../comment/comment_view.dart';
 import 'home_controller.dart';
@@ -24,6 +25,7 @@ class Home extends GetView<HomeController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Container(width: 90, child: SvgPicture.asset()),
               Obx(
                 () => ListView.builder(
                   shrinkWrap: true,
@@ -45,14 +47,16 @@ class Home extends GetView<HomeController> {
                             const SizedBox(width: 16),
                             Text(
                               "${plante.prenomUtilisateur} ${plante.nameUtilisateur}",
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 16),
                         SizedBox(
-                          height: 200,
+                          height: 300,
                           child: Image.network(
                             plante.image ?? "",
                             errorBuilder: (context, error, stackTrace) {
