@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Doctrine\Common\Lexer\Token;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,13 +53,20 @@ class UserController extends Controller
     if($user = User::whereEmail($request->email)->first()){
         if(Hash::check($request->password, $user->password)){
             if ($user->role == 1) {
-                return response()->json([$user],200);
-
+                return response()->json([
+                    'token' => $user->createToken(time())->plainTextToken,
+                    // 'role' => 'botaniste'
+            ]); 
             } elseif ($user->role == 2) {
-                return response()->json([$user],200);
-            } 
-            elseif ($user->role == 3){
-                return response()->json([$user],200);
+                return response()->json([
+                    'token' => $user->createToken(time())->plainTextToken,
+                    // 'role' => 'admin'
+            ]);
+        } elseif ($user->role == 3){
+            return response()->json([
+                'token' => $user->createToken(time())->plainTextToken,
+                // 'role' => 'superadmin'
+        ]);
             }
         } 
         elseif (!Hash::check($request->password, $user->password)) {
@@ -67,7 +75,6 @@ class UserController extends Controller
     } else {
         return response()->json(['error'=>'email is incorrect'],500);
     }
-      
     }
 }
 public function logout(Request $request)
