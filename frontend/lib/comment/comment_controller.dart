@@ -15,17 +15,20 @@ class PostPageController extends GetxController {
   final RxList<String> comments = <String>[].obs;
   final TextEditingController commentController = TextEditingController();
   final commentList = <Commentaire>[].obs;
-
+  String? token;
   void onInit() async {
     final Map<String, dynamic> args = Get.arguments;
     planteList = args["planteList"] as Plante;
     user = args["user"] as User;
+    token = args["token"];
     await fetchComments();
     super.onInit();
   }
 
   Future<void> fetchComments() async {
     try {
+      final dio = Dio();
+      dio.options.headers["Authorization"] = "Bearer $token";
       Response response =
           await Dio().get('http://10.0.2.2:8000/api/conseil/${planteList.id}');
       List<dynamic> data = response.data;
@@ -38,14 +41,14 @@ class PostPageController extends GetxController {
 
   Future<void> createComment() async {
     try {
+      final dio = Dio();
+      dio.options.headers["Authorization"] = "Bearer $token";
       String url = "http://10.0.2.2:8000/api/conseil/${planteList.id}";
       final body = {
         "user_id": user.id,
         "contenuConseil": commentController.text,
       };
       Response response;
-
-      final dio = Dio();
 
       response = await dio.post(url, data: body);
 

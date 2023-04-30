@@ -10,15 +10,19 @@ class AddArticleController extends GetxController {
   TextEditingController localisation = TextEditingController();
   TextEditingController image = TextEditingController();
   late User user;
+  String? token;
 
   void onInit() async {
     final Map<String, dynamic> args = Get.arguments;
     user = args["user"] as User;
+    token = args['token'];
     super.onInit();
   }
 
   Future<void> createPostPlante() async {
     try {
+      final dio = Dio();
+      dio.options.headers["Authorization"] = "Bearer $token";
       const String url = "http://10.0.2.2:8000/api/plante";
       final body = {
         "nom_plante": namePlante.text,
@@ -28,8 +32,6 @@ class AddArticleController extends GetxController {
         "user_id": user.id,
       };
       Response response;
-
-      final dio = Dio();
 
       response = await dio.post(url, data: body);
 

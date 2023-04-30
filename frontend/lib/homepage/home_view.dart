@@ -16,7 +16,8 @@ class Home extends GetView<HomeController> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 51, 177, 20),
         onPressed: () {
-          Get.toNamed('/addPost', arguments: {"user": controller.user});
+          Get.toNamed('/addPost',
+              arguments: {"user": controller.user, "token": controller.token});
         },
         child: Icon(Icons.add),
       ),
@@ -87,7 +88,8 @@ class Home extends GetView<HomeController> {
                             onTap: () {
                               Get.toNamed('/comment', arguments: {
                                 "planteList": plante,
-                                "user": controller.user
+                                "user": controller.user,
+                                "token": controller.token
                               });
                             },
                           ),

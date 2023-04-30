@@ -12,6 +12,8 @@ class LoginController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  String? jwtToken;
+
   void logidn() async {
     try {
       const String url = "http://10.0.2.2:8000/api/login";
@@ -23,11 +25,13 @@ class LoginController extends GetxController {
       response = await dio.post(url, data: body);
 
       if (response.statusCode == 200) {
-        final userJson = response.data[0] as Map<String, dynamic>;
+        final userJson = response.data['user'] as Map<String, dynamic>;
         final user = User.fromJson(userJson);
-        Get.to(() => Home(), arguments: {
-          "user": user,
-        });
+
+        final token = response.data['token'] as String;
+        // Utilisez la variable "token" pour stocker le jeton JWT et l'utiliser ultérieurement
+
+        Get.to(() => Home(), arguments: {"user": user, "token": token});
       } else {
         SnackBar(content: Text("${response.statusCode}"));
       }
