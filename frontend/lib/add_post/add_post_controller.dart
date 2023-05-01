@@ -35,7 +35,7 @@ class AddArticleController extends GetxController {
 
       response = await dio.post(url, data: body);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         Get.back();
       } else {
         SnackBar(content: Text("${response.statusCode}"));

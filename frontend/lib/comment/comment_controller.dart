@@ -17,10 +17,7 @@ class PostPageController extends GetxController {
   final commentList = <Commentaire>[].obs;
   String? token;
   void onInit() async {
-    final Map<String, dynamic> args = Get.arguments;
-    planteList = args["planteList"] as Plante;
-    user = args["user"] as User;
-    token = args["token"];
+    await getArguments();
     await fetchComments();
     super.onInit();
   }
@@ -30,7 +27,7 @@ class PostPageController extends GetxController {
       final dio = Dio();
       dio.options.headers["Authorization"] = "Bearer $token";
       Response response =
-          await Dio().get('http://10.0.2.2:8000/api/conseil/${planteList.id}');
+          await dio.get('http://10.0.2.2:8000/api/conseil/${planteList.id}');
       List<dynamic> data = response.data;
       commentList.value =
           data.map((comment) => Commentaire.fromJson(comment)).toList();
@@ -64,5 +61,12 @@ class PostPageController extends GetxController {
       );
       print(e);
     }
+  }
+
+  Future<void> getArguments() async {
+    final Map<String, dynamic> args = Get.arguments;
+    planteList = args["planteList"] as Plante;
+    user = args["user"] as User;
+    token = args["token"];
   }
 }
