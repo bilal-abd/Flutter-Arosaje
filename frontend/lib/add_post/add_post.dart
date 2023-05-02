@@ -1,9 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_dialogs/flutter_dialogs.dart';
 
 import 'add_post_controller.dart';
 
 class AddArticlePage extends GetView<AddArticleController> {
+  Future<void> showAlert(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmation'),
+          content: Text('Vos données seront enregistrées !'),
+          actions: [
+            TextButton(
+              child: Text('Annuler'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Continuer'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await controller.createPostPlante();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,14 +89,15 @@ class AddArticlePage extends GetView<AddArticleController> {
                   color: const Color.fromARGB(255, 51, 177, 20),
                 ),
                 child: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: const Text(
-                      "Ajouter",
-                      style: TextStyle(color: Colors.white),
-                    )),
+                  padding: EdgeInsets.all(15),
+                  child: const Text(
+                    "Ajouter",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
               onTap: () async {
-                await controller.createPostPlante();
+                await showAlert(context);
               },
             )
           ],
