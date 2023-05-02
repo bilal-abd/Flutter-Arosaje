@@ -62,10 +62,19 @@ class ConseilController extends Controller
     //         $plante = Plante::with('conseils')->find($id)->first(); 
     //         return $plante ;
     //   }
-    public function show(Plante $id)
+    public function show($id)
     {
-        $conseils = $id->conseils()->get();
-        return $conseils;
+        $conseil = Conseil::with('user')->where('id', $id)->get()->map(function ($conseil) {
+            $conseil->prenom_utilisateur = $conseil->user->only('name')['name'];
+            $conseil->name_utilisateur = $conseil->user->only('prenom')['prenom'];
+            return $conseil;
+        });
+    
+        if ($conseil->isNotEmpty()) {
+            return response($conseil->first(), 200);
+        }
+    
+        return response(["message" => "Aucun conseil trouvé"], 200);
     }
     /**
      * Update the specified resource in storage.
