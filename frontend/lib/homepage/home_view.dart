@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/comment/comment_bindings.dart';
+import 'package:flutter_application_1/homepage/aide.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,18 +82,35 @@ class Home extends GetView<HomeController> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        SizedBox(
-                          height: 24,
-                          child: GestureDetector(
-                            child: FaIcon(FontAwesomeIcons.comment),
-                            onTap: () {
-                              Get.toNamed('/comment', arguments: {
-                                "planteList": plante,
-                                "user": controller.user,
-                                "token": controller.token
-                              });
-                            },
-                          ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 180.0),
+                              child: Center(
+                                child: SizedBox(
+                                  height: 24,
+                                  child: GestureDetector(
+                                    child: FaIcon(FontAwesomeIcons.comment),
+                                    onTap: () {
+                                      Get.toNamed('/comment', arguments: {
+                                        "planteList": plante,
+                                        "user": controller.user,
+                                        "token": controller.token
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 150.0),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => AidePage());
+                                  },
+                                  child: FaIcon(FontAwesomeIcons.handshake)),
+                            ),
+                          ],
                         ),
                       ],
                     );
